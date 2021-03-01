@@ -4,26 +4,19 @@ import static java.lang.Thread.sleep;
 
 public class Printer implements Runnable{
 
-    Documents docs;
+    DocumentQueue docs;
 
-
-    public Printer(Documents docs) {
+    public Printer(DocumentQueue docs) {
         this.docs = docs;
     }
 
     @Override
     public void run() {
-
-//        try {
-//            sleep(10000);
-//        }catch (InterruptedException e) {
-//        }
-
-
-        //aici trebuie while
+        Document dummyDoc;
         while(true){
             if(!docs.queue.isEmpty()) {
-                System.out.println("Printing doc: " + docs.printDoc());
+                dummyDoc = docs.printDoc();
+                System.out.println("Printing " + dummyDoc.getName() + " takes "+dummyDoc.getTime2Elaborate()+" sec.");
             }
         }
     }
